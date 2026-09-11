@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Categories · Whisperbloom Garden Tales</title>
+  <!-- Fonts · handcrafted editorial -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       WHISPERBLOOM · design language 2026
+       mood : literary · botanical · slow knowledge
+       palette : umber, moss, cream, blush, slate
+       ============================================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f7f4ef;
+      color: #2d2a24;
+      font-family: 'Chivo', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      padding: 0 1.5rem;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* ---------- typography ---------- */
+    h1, h2, h3, h4 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 8vw, 4.8rem);
+      color: #2d2a24;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: #2d2a24;
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h4 {
+      font-size: 1.3rem;
+      font-family: 'Chivo', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #6b5f4e;
+    }
+
+    .body-large {
+      font-size: 1.25rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: #3d382f;
+    }
+
+    .body-small {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #5c5342;
+    }
+
+    .meta {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #7f735f;
+      border-bottom: 1px solid #e2d9cd;
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    /* ---------- color & surface ---------- */
+    .bg-cream { background: #f7f4ef; }
+    .bg-moss { background: #d9d0c2; }
+    .bg-umber { background: #4d4235; color: #f2ede4; }
+    .bg-blush { background: #e9dbd0; }
+    .bg-slate { background: #3b3a36; color: #ece7df; }
+
+    .text-umber { color: #4d4235; }
+    .text-moss { color: #6b5f4e; }
+    .text-cream { color: #f2ede4; }
+
+    /* ---------- buttons & links ---------- */
+    a {
+      color: #4d4235;
+      text-decoration: none;
+      transition: color 0.2s;
+      border-bottom: 1px solid transparent;
+    }
+
+    a:hover {
+      color: #8a7a62;
+      border-bottom: 1px solid #c2b4a2;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2.2rem;
+      background: #4d4235;
+      color: #f2ede4;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      border: none;
+      border-radius: 0;
+      transition: 0.25s ease;
+      cursor: pointer;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      border-bottom: 0;
+    }
+
+    .btn:hover {
+      background: #2d2a24;
+      color: #f7f4ef;
+      border-bottom: 0;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #4d4235;
+      color: #4d4235;
+    }
+
+    .btn-outline:hover {
+      background: #4d4235;
+      color: #f2ede4;
+    }
+
+    /* ---------- navigation · literary explorer ---------- */
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2.2rem 0 1.8rem;
+      border-bottom: 1px solid #e2d9cd;
+      margin-bottom: 3rem;
+    }
+
+    .nav-brand {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.2rem;
+      letter-spacing: -0.02em;
+      color: #2d2a24;
+      border-bottom: 0;
+    }
+
+    .nav-brand span {
+      font-weight: 300;
+      color: #8a7a62;
+      font-size: 1.2rem;
+      margin-left: 0.4rem;
+      letter-spacing: 0.1em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      font-weight: 400;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links a {
+      border-bottom: 0;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-bottom: 2px solid #8a7a62;
+      color: #2d2a24;
+    }
+
+    .nav-search {
+      background: #ece7df;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1px solid #d9d0c2;
+    }
+
+    .nav-search input {
+      background: transparent;
+      border: 0;
+      font-family: 'Chivo', sans-serif;
+      font-size: 0.85rem;
+      padding: 0.3rem 0;
+      outline: 0;
+      width: 120px;
+      color: #2d2a24;
+    }
+
+    .nav-search input::placeholder {
+      color: #8a7a62;
+      font-weight: 300;
+    }
+
+    /* ---------- categories hero ---------- */
+    .categories-hero {
+      padding: 1rem 0 2rem;
+      border-bottom: 1px solid #e2d9cd;
+      margin-bottom: 2.5rem;
+    }
+
+    .categories-hero h1 {
+      margin-bottom: 0.2rem;
+    }
+
+    .categories-hero .subhead {
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: #5c5342;
+      border-left: 4px solid #b8aa96;
+      padding-left: 1.2rem;
+      margin: 0.8rem 0 0.5rem;
+      max-width: 720px;
+    }
+
+    /* ---------- category grid ---------- */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2.5rem;
+      margin: 2.5rem 0 3rem;
+    }
+
+    .category-card {
+      background: #f2ede4;
+      padding: 1.8rem 1.8rem 2rem;
+      border-right: 6px solid #b8aa96;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .category-card:hover {
+      background: #ece7df;
+      border-right-color: #8a7a62;
+    }
+
+    .category-card h3 {
+      font-size: 1.8rem;
+      font-family: 'Instrument Serif', serif;
+      margin-bottom: 0.4rem;
+      color: #2d2a24;
+    }
+
+    .category-card .count {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #7f735f;
+      border-bottom: 1px solid #d9d0c2;
+      padding-bottom: 0.4rem;
+      display: inline-block;
+      margin-bottom: 0.6rem;
+    }
+
+    .category-card p {
+      font-size: 0.95rem;
+      color: #3d382f;
+      margin: 0.6rem 0 1rem;
+    }
+
+    .category-card .read-more {
+      font-weight: 400;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid #b8aa96;
+      padding-bottom: 0.2rem;
+    }
+
+    .category-card .read-more:hover {
+      border-bottom-color: #4d4235;
+    }
+
+    /* ---------- featured category (accent) ---------- */
+    .featured-category {
+      background: #4d4235;
+      color: #f2ede4;
+      padding: 2rem 2rem 2.2rem;
+      border-right: 6px solid #b8aa96;
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .featured-category h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.2rem;
+      color: #f2ede4;
+      margin-bottom: 0.2rem;
+    }
+
+    .featured-category .count {
+      color: #d9d0c2;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .featured-category p {
+      max-width: 600px;
+      color: #ece7df;
+      margin: 0.5rem 0 0;
+    }
+
+    .featured-category .btn-outline-light {
+      background: transparent;
+      border: 1px solid #ece7df;
+      color: #f2ede4;
+      padding: 0.6rem 2rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transition: 0.25s ease;
+      display: inline-block;
+      margin-top: 0.5rem;
+    }
+
+    .featured-category .btn-outline-light:hover {
+      background: #f2ede4;
+      color: #4d4235;
+      border-color: #f2ede4;
+    }
+
+    /* ---------- footer ---------- */
+    footer {
+      margin-top: 2rem;
+      padding: 3rem 0 2rem;
+      border-top: 1px solid #e2d9cd;
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      font-size: 0.9rem;
+    }
+
+    footer .brand-footer h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2rem;
+    }
+
+    footer .brand-footer p {
+      color: #5c5342;
+      max-width: 280px;
+      margin-top: 0.5rem;
+    }
+
+    footer h4 {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: #4d4235;
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid #d9d0c2;
+      padding-bottom: 0.5rem;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    footer ul a {
+      border-bottom: 0;
+      color: #5c5342;
+    }
+
+    footer ul a:hover {
+      color: #2d2a24;
+      border-bottom: 1px solid #8a7a62;
+    }
+
+    .footer-legal {
+      grid-column: 1 / -1;
+      border-top: 1px solid #e2d9cd;
+      padding-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: #7f735f;
+    }
+
+    .footer-legal a {
+      color: #6b5f4e;
+      border-bottom: 0;
+      margin-right: 1.5rem;
+    }
+
+    .footer-legal a:hover {
+      border-bottom: 1px solid #8a7a62;
+    }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 900px) {
+      footer {
+        grid-template-columns: 1fr 1fr;
+      }
+      .featured-category {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 0 0.8rem; }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 1.2rem;
+      }
+      .nav-search {
+        width: 100%;
+      }
+      .nav-search input { width: 100%; }
+      footer {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .footer-legal {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- ========== NAVIGATION ========== -->
+    <nav>
+      <a href="index.html" class="nav-brand">Whisperbloom <span>·Garden Notes</span></a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="terms.html">Terms Of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="cookies.html">Cookies Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="categories.html" style="border-bottom: 2px solid #8a7a62;">Categories</a>
+      </div>
+      <div class="nav-search">
+        <span style="opacity:0.6;">🔍</span>
+        <input type="text" placeholder="search gardens…" />
+      </div>
+    </nav>
+
+    <!-- ========== CATEGORIES HERO ========== -->
+    <div class="categories-hero">
+      <span class="meta">· garden categories ·</span>
+      <h1>Browse by theme</h1>
+      <div class="subhead">Wander through our curated collections — each category is a different bed in the garden, tended with care and curiosity.</div>
+    </div>
+
+    <!-- ========== FEATURED CATEGORY ========== -->
+    <div class="featured-category">
+      <div>
+        <h3>🌱 Soil &amp; Earth</h3>
+        <div class="count">14 articles · deep reads</div>
+        <p>From compost alchemy to the mycelial networks beneath our feet. Essays on the foundation of all gardens.</p>
+        <a href="#" class="btn-outline-light">Explore soil</a>
+      </div>
+      <div style="font-size:2.8rem; opacity:0.6; font-family: 'Instrument Serif', serif;">⬚</div>
+    </div>
+
+    <!-- ========== CATEGORY GRID ========== -->
+    <div class="category-grid">
+
+      <div class="category-card">
+        <h3>🌿 Perennials</h3>
+        <div class="count">22 articles</div>
+        <p>Plants that return, year after year. Celebrating the quiet persistence of peonies, lavender, and hardy geraniums.</p>
+        <a href="#" class="read-more">View perennials →</a>
+      </div>
+
+      <div class="category-card">
+        <h3>🍅 Kitchen Gardens</h3>
+        <div class="count">18 articles</div>
+        <p>Tomatoes, basil, and the art of growing your own dinner. Practical notes for the edible gardener.</p>
+        <a href="#" class="read-more">View kitchen gardens →</a>
+      </div>
+
+      <div class="category-card">
+        <h3>🌳 Design &amp; Wilding</h3>
+        <div class="count">11 articles</div>
+        <p>Where structure meets spontaneity. Garden design, rewilding, and the beauty of the untamed edge.</p>
+        <a href="#" class="read-more">View design & wilding →</a>
+      </div>
+
+      <div class="category-card">
+        <h3>🌼 Seasonal Notes</h3>
+        <div class="count">9 articles</div>
+        <p>Observations from the turning year — from the first snowdrop to the last autumn leaf. A gardener's almanac.</p>
+        <a href="#" class="read-more">View seasonal notes →</a>
+      </div>
+
+      <div class="category-card">
+        <h3>🪴 Container &amp; Small Spaces</h3>
+        <div class="count">7 articles</div>
+        <p>Gardening on balconies, windowsills, and rooftops. Proving that every pocket of earth can bloom.</p>
+        <a href="#" class="read-more">View container gardens →</a>
+      </div>
+
+      <div class="category-card">
+        <h3>📖 Garden Literature</h3>
+        <div class="count">6 articles</div>
+        <p>Book reviews, literary essays, and the poetry of gardens. For those who read with their hands in the soil.</p>
+        <a href="#" class="read-more">View literature →</a>
+      </div>
+
+      <div class="category-card">
+        <h3>🐝 Pollinator Sanctuaries</h3>
+        <div class="count">8 articles</div>
+        <p>Creating havens for bees, butterflies, and beneficial insects. A guide to planting with purpose.</p>
+        <a href="#" class="read-more">View pollinator sanctuaries →</a>
+      </div>
+
+      <div class="category-card">
+        <h3>🌾 Meadow &amp; Native Grasses</h3>
+        <div class="count">5 articles</div>
+        <p>The beauty of the prairie, the whisper of grasses. Celebrating native plant communities and their rhythms.</p>
+        <a href="#" class="read-more">View meadows →</a>
+      </div>
+
+    </div>
+
+    <!-- ========== ADDITIONAL INFO BLOCK ========== -->
+    <div style="display:flex; flex-wrap:wrap; gap:1.5rem; padding:1.5rem 0 1rem; border-bottom:1px solid #e2d9cd; border-top:1px solid #e2d9cd; margin-bottom:2rem; font-size:0.8rem; color:#5c5342;">
+      <a href="#">Editorial Policy</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms &amp; Conditions</a>
+      <a href="cookies.html">Cookie Policy</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="#">Sitemap</a>
+      <a href="#">FAQ</a>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <footer>
+      <div class="brand-footer">
+        <h3>Whisperbloom</h3>
+        <p>Garden tales for the quiet observer. Founded in 2026, rooted in the soil of the Pacific Northwest.</p>
+        <p style="margin-top:0.5rem; font-size:0.8rem; color:#7f735f;">© 2026 · Whisperbloom Garden Tales</p>
+      </div>
+      <div>
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="#">Soil &amp; earth</a></li>
+          <li><a href="#">Perennials</a></li>
+          <li><a href="#">Kitchen gardens</a></li>
+          <li><a href="#">Design &amp; wilding</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Information</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#">Authors</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Policies</h4>
+        <ul>
+          <li><a href="#">Editorial Policy</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms.html">Terms</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-legal">
+        <span>Whisperbloom Garden Tales · a premium authority publication</span>
+        <span>
+          <a href="#">Ad Choices</a>
+          <a href="#">Accessibility</a>
+        </span>
+      </div>
+    </footer>
+
+  </div>
+  <!-- end container -->
+</body>
+</html>

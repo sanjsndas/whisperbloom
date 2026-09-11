@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Whisperbloom · privacy · garden correspondence</title>
+  <!-- Fonts · handcrafted editorial -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,300;0,400;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       WHISPERBLOOM · design language 2026
+       mood : literary · botanical · slow knowledge
+       palette : umber, moss, cream, blush, slate
+       ============================================================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f7f4ef;
+      color: #2d2a24;
+      font-family: 'Chivo', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      padding: 0 1.5rem;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* ---------- typography ---------- */
+    h1, h2, h3, h4 {
+      font-family: 'Instrument Serif', serif;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 8vw, 4.8rem);
+      color: #2d2a24;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: #2d2a24;
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h4 {
+      font-size: 1.3rem;
+      font-family: 'Chivo', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #6b5f4e;
+    }
+
+    .body-large {
+      font-size: 1.25rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: #3d382f;
+    }
+
+    .body-small {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: #5c5342;
+    }
+
+    .meta {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #7f735f;
+      border-bottom: 1px solid #e2d9cd;
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    /* ---------- color & surface ---------- */
+    .bg-cream { background: #f7f4ef; }
+    .bg-moss { background: #d9d0c2; }
+    .bg-umber { background: #4d4235; color: #f2ede4; }
+    .bg-blush { background: #e9dbd0; }
+    .bg-slate { background: #3b3a36; color: #ece7df; }
+
+    .text-umber { color: #4d4235; }
+    .text-moss { color: #6b5f4e; }
+    .text-cream { color: #f2ede4; }
+
+    /* ---------- buttons & links ---------- */
+    a {
+      color: #4d4235;
+      text-decoration: none;
+      transition: color 0.2s;
+      border-bottom: 1px solid transparent;
+    }
+
+    a:hover {
+      color: #8a7a62;
+      border-bottom: 1px solid #c2b4a2;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.8rem 2.2rem;
+      background: #4d4235;
+      color: #f2ede4;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      border: none;
+      border-radius: 0;
+      transition: 0.25s ease;
+      cursor: pointer;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      border-bottom: 0;
+    }
+
+    .btn:hover {
+      background: #2d2a24;
+      color: #f7f4ef;
+      border-bottom: 0;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #4d4235;
+      color: #4d4235;
+    }
+
+    .btn-outline:hover {
+      background: #4d4235;
+      color: #f2ede4;
+    }
+
+    /* ---------- navigation · literary explorer ---------- */
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2.2rem 0 1.8rem;
+      border-bottom: 1px solid #e2d9cd;
+      margin-bottom: 3rem;
+    }
+
+    .nav-brand {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2.2rem;
+      letter-spacing: -0.02em;
+      color: #2d2a24;
+      border-bottom: 0;
+    }
+
+    .nav-brand span {
+      font-weight: 300;
+      color: #8a7a62;
+      font-size: 1.2rem;
+      margin-left: 0.4rem;
+      letter-spacing: 0.1em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.2rem;
+      font-weight: 400;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links a {
+      border-bottom: 0;
+      padding: 0.3rem 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-bottom: 2px solid #8a7a62;
+      color: #2d2a24;
+    }
+
+    .nav-search {
+      background: #ece7df;
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1px solid #d9d0c2;
+    }
+
+    .nav-search input {
+      background: transparent;
+      border: 0;
+      font-family: 'Chivo', sans-serif;
+      font-size: 0.85rem;
+      padding: 0.3rem 0;
+      outline: 0;
+      width: 120px;
+      color: #2d2a24;
+    }
+
+    .nav-search input::placeholder {
+      color: #8a7a62;
+      font-weight: 300;
+    }
+
+    /* ---------- page header · privacy ---------- */
+    .page-header {
+      padding: 2rem 0 3rem;
+      border-bottom: 1px solid #e2d9cd;
+      margin-bottom: 3rem;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2.8rem, 7vw, 4.4rem);
+    }
+
+    .page-header .subhead {
+      font-size: 1.25rem;
+      color: #5c5342;
+      max-width: 700px;
+      border-left: 4px solid #b8aa96;
+      padding-left: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    /* ---------- privacy content ---------- */
+    .privacy-content {
+      padding: 1rem 0 4rem;
+      border-bottom: 1px solid #e2d9cd;
+      margin-bottom: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .privacy-main {
+      background: #f2ede4;
+      padding: 2.5rem;
+      border-left: 6px solid #8a7a62;
+    }
+
+    .privacy-main h2 {
+      font-size: 2rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .privacy-main h2:first-of-type {
+      margin-top: 0;
+    }
+
+    .privacy-main p {
+      margin-bottom: 1.2rem;
+      color: #3d382f;
+    }
+
+    .privacy-main ul {
+      margin: 0.8rem 0 1.5rem 1.5rem;
+      color: #3d382f;
+    }
+    .privacy-main ul li {
+      margin-bottom: 0.4rem;
+    }
+
+    .privacy-side {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .privacy-side .info-card {
+      background: #f2ede4;
+      padding: 1.8rem 2rem;
+      border-right: 4px solid #b8aa96;
+    }
+
+    .privacy-side .info-card h4 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.6rem;
+      text-transform: none;
+      letter-spacing: 0;
+      color: #2d2a24;
+      margin-bottom: 0.2rem;
+    }
+    .privacy-side .info-card p {
+      color: #3d382f;
+      font-size: 0.95rem;
+      margin-top: 0.3rem;
+    }
+    .privacy-side .info-card .detail {
+      display: block;
+      margin-top: 0.8rem;
+      font-size: 0.9rem;
+      border-top: 1px solid #d9d0c2;
+      padding-top: 0.8rem;
+      color: #4d4235;
+    }
+
+    .privacy-side .compact-policies {
+      background: #ece7df;
+      padding: 1.5rem 2rem;
+      border-bottom: 4px solid #b8aa96;
+    }
+    .privacy-side .compact-policies h4 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.4rem;
+      text-transform: none;
+      letter-spacing: 0;
+      color: #2d2a24;
+      margin-bottom: 0.8rem;
+    }
+    .privacy-side .compact-policies a {
+      display: inline-block;
+      margin-right: 1rem;
+      margin-bottom: 0.4rem;
+      border-bottom: 1px solid transparent;
+    }
+    .privacy-side .compact-policies a:hover {
+      border-bottom: 1px solid #8a7a62;
+    }
+
+    /* ---------- footer · handcrafted ---------- */
+    footer {
+      margin-top: 2rem;
+      padding: 3rem 0 2rem;
+      border-top: 1px solid #e2d9cd;
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      font-size: 0.9rem;
+    }
+
+    footer .brand-footer h3 {
+      font-family: 'Instrument Serif', serif;
+      font-size: 2rem;
+    }
+
+    footer .brand-footer p {
+      color: #5c5342;
+      max-width: 280px;
+      margin-top: 0.5rem;
+    }
+
+    footer h4 {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: #4d4235;
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid #d9d0c2;
+      padding-bottom: 0.5rem;
+    }
+
+    footer ul {
+      list-style: none;
+    }
+
+    footer ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    footer ul a {
+      border-bottom: 0;
+      color: #5c5342;
+    }
+
+    footer ul a:hover {
+      color: #2d2a24;
+      border-bottom: 1px solid #8a7a62;
+    }
+
+    .footer-legal {
+      grid-column: 1 / -1;
+      border-top: 1px solid #e2d9cd;
+      padding-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: #7f735f;
+    }
+
+    .footer-legal a {
+      color: #6b5f4e;
+      border-bottom: 0;
+      margin-right: 1.5rem;
+    }
+
+    .footer-legal a:hover {
+      border-bottom: 1px solid #8a7a62;
+    }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 900px) {
+      .privacy-content {
+        grid-template-columns: 1fr;
+      }
+      footer {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 0 0.8rem; }
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 1.2rem;
+      }
+      .nav-search {
+        width: 100%;
+      }
+      .nav-search input { width: 100%; }
+      .privacy-main { padding: 1.5rem; }
+      footer {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .footer-legal {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav>
+    <a href="#" class="nav-brand">Whisperbloom <span>·Garden Notes</span></a>
+    <div class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="terms.html">Terms Of Privacy</a></li>
+      <li><a href="privacy.html" style="border-bottom:2px solid #8a7a62;">Privacy Policy</a></li>
+      <li><a href="cookies.html">Cookies Policy</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+      <li><a href="categories.html">Categories</a></li>
+    </div>
+    <div class="nav-search">
+      <span style="opacity:0.6;">🔍</span>
+      <input type="text" placeholder="search gardens…" />
+    </div>
+  </nav>
+
+  <!-- ========== PAGE HEADER · PRIVACY ========== -->
+  <div class="page-header">
+    <span class="meta">· privacy &amp; trust ·</span>
+    <h1>Our quiet pledge</h1>
+    <div class="subhead">Your data is treated with the same care as a rare heirloom seed. We believe in transparency, minimal collection, and absolute respect.</div>
+  </div>
+
+  <!-- ========== PRIVACY GRID ========== -->
+  <div class="privacy-content">
+    <!-- main privacy text -->
+    <div class="privacy-main">
+      <h2>Privacy Policy</h2>
+      <p><em>Last updated: April 2026</em></p>
+      <p>Whisperbloom Garden Tales (&ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) values the trust you place in us. This policy describes how we collect, use, and protect your personal information when you visit our garden&mdash;digital or otherwise.</p>
+
+      <h2>What we collect</h2>
+      <p>We limit collection to what is necessary for correspondence and improving your experience:</p>
+      <ul>
+        <li><strong>Name and email address</strong> — when you send a message or subscribe to our newsletter.</li>
+        <li><strong>Aggregated usage data</strong> — such as page visits and search queries, anonymized.</li>
+        <li><strong>Cookies</strong> — only essential functional cookies (see our <a href="cookies.html">Cookie Policy</a>).</li>
+      </ul>
+
+      <h2>How we use your data</h2>
+      <ul>
+        <li>To respond to your inquiries and correspondence.</li>
+        <li>To send occasional garden notes and updates, if you have opted in.</li>
+        <li>To improve our content and understand which topics resonate with our readers.</li>
+      </ul>
+      <p>We never sell, rent, or trade your personal information. We do not share data with third parties except as required by law or to protect the security of our site.</p>
+
+      <h2>Data security</h2>
+      <p>We implement industry-standard safeguards to protect your data. All transmissions are encrypted, and access is limited to essential personnel.</p>
+
+      <h2>Your rights</h2>
+      <p>You may request access to, correction of, or deletion of your personal data at any time by writing to <strong>privacy@whisperbloom.garden</strong>. We will respond within 15 days.</p>
+
+      <h2>Updates to this policy</h2>
+      <p>We may update this policy occasionally. Changes will be posted here, and we encourage you to review it periodically.</p>
+    </div>
+
+    <!-- side info & quick links -->
+    <div class="privacy-side">
+      <div class="info-card">
+        <h4>🌿</h4>
+        <h4>Data protection officer</h4>
+        <p>Our editorial team oversees data stewardship. For any privacy concerns, contact us directly.</p>
+        <span class="detail">📧 privacy@whisperbloom.garden</span>
+      </div>
+
+      <div class="info-card">
+        <h4>📜</h4>
+        <h4>Your consent</h4>
+        <p>By using our site, you consent to this privacy policy. You may withdraw consent at any time.</p>
+        <span class="detail">🔒 We do not use third-party trackers or advertising networks.</span>
+      </div>
+
+      <div class="compact-policies">
+        <h4>Quick policies</h4>
+        <p style="font-size:0.9rem; color:#3d382f;">
+          <a href="terms.html">Terms of Privacy</a><br />
+          <a href="cookies.html">Cookie Policy</a><br />
+          <a href="disclaimer.html">Disclaimer</a><br />
+          <a href="#">Editorial Policy</a>
+        </p>
+        <p style="margin-top:0.8rem; font-size:0.8rem; color:#5c5342;">All policies reflect our commitment to slow, thoughtful digital gardening.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== CONDENSED LEGAL / POLICY LINKS ========== -->
+  <div style="display:flex; flex-wrap:wrap; gap:1.5rem; padding:1.5rem 0 1rem; border-bottom:1px solid #e2d9cd; font-size:0.8rem; color:#5c5342;">
+    <a href="#">Editorial Policy</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms &amp; Conditions</a>
+    <a href="#">Cookie Policy</a>
+    <a href="#">Disclaimer</a>
+    <a href="#">Sitemap</a>
+    <a href="#">FAQ</a>
+  </div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer>
+    <div class="brand-footer">
+      <h3>Whisperbloom</h3>
+      <p>Garden tales for the quiet observer. Founded in 2026, rooted in the soil of the Pacific Northwest.</p>
+      <p style="margin-top:0.5rem; font-size:0.8rem; color:#7f735f;">© 2026 · Whisperbloom Garden Tales</p>
+    </div>
+    <div>
+      <h4>Categories</h4>
+      <ul>
+        <li><a href="#">Soil &amp; earth</a></li>
+        <li><a href="#">Perennials</a></li>
+        <li><a href="#">Kitchen gardens</a></li>
+        <li><a href="#">Design &amp; wilding</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Information</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Authors</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Resources</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Policies</h4>
+      <ul>
+        <li><a href="#">Editorial Policy</a></li>
+        <li><a href="#">Privacy</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Cookie Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-legal">
+      <span>Whisperbloom Garden Tales · a premium authority publication</span>
+      <span>
+        <a href="#">Ad Choices</a>
+        <a href="#">Accessibility</a>
+      </span>
+    </div>
+  </footer>
+
+</div>
+<!-- end container -->
+</body>
+</html>
